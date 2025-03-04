@@ -1,5 +1,5 @@
-import getFactory from "./creational-design-patterns/factory-method/factory/factory-provider.mjs";
-import { GunType } from "./creational-design-patterns/factory-method/product/gun.mjs";
+import { GunType } from "./creational-design-patterns/factory-method/product/index.mjs";
+import { getFactory } from "./creational-design-patterns/factory-method/factory/index.mjs";
 
 export function factoryMethodDemo() {
   const owner = "Kevin";
