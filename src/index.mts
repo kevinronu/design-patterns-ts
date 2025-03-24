@@ -1,3 +1,3 @@
-import { factoryMethodDemo } from "./patterns-demo.mjs";
+import { abstractFactoryDemo } from "./demo/index.mjs";
 
-factoryMethodDemo();
+abstractFactoryDemo();
