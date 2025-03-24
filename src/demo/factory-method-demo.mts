@@ -1,7 +1,7 @@
-import { GunType } from "./creational-design-patterns/factory-method/product/index.mjs";
-import { getFactory } from "./creational-design-patterns/factory-method/factory/index.mjs";
+import { GunType } from "../creational-design-patterns/factory-method/product/index.mjs";
+import { getFactory } from "../creational-design-patterns/factory-method/factory/index.mjs";
 
-export function factoryMethodDemo() {
+export default function factoryMethodDemo() {
   const owner = "Kevin";
   const gunType1 = GunType.AK47;
 
