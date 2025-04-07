@@ -2,7 +2,7 @@ import { AlienFactory } from "../creational-design-patterns/abstract-factory/fac
 import { FuturisticFactory } from "../creational-design-patterns/abstract-factory/factory/futuristic/index.mjs";
 import { Factory } from "../creational-design-patterns/abstract-factory/factory/index.mjs";
 
-function deployArmy(factory: Factory) {
+function deployArmy(factory: Factory): void {
   const drone = factory.createDrone();
   const soldierRobot = factory.createSoldierRobot();
 
@@ -13,7 +13,7 @@ function deployArmy(factory: Factory) {
   soldierRobot.meleeAttack();
 }
 
-export default function abstractFactoryDemo() {
+export default function abstractFactoryDemo(): void {
   const futuristicFactory = new FuturisticFactory();
   deployArmy(futuristicFactory);
 
