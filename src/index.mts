@@ -1,3 +1,3 @@
-import { prototypeDemo } from "./demo/index.mjs";
+import { singletonDemo } from "./demo/index.mjs";
 
-prototypeDemo();
+singletonDemo();
