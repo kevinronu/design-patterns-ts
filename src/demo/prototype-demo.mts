@@ -3,7 +3,7 @@ import {
   CrewMember,
   CrewRole,
   Spaceship,
-} from "../creational-design-patterns/prototype/index.mjs";
+} from "../design-patterns/creational-design-patterns/prototype/index.mjs";
 
 export default function prototypeDemo(): void {
   const alice = new CrewMember("Alice", CrewRole.Pilot);

@@ -1,7 +1,7 @@
 import {
   GalacticCommandCenter,
   Spaceship,
-} from "../creational-design-patterns/singleton/index.mjs";
+} from "../design-patterns/creational-design-patterns/singleton/index.mjs";
 
 export default function singletonDemo() {
   const orion = new Spaceship("Orion");
