@@ -1,3 +1,3 @@
-import { singletonDemo } from "./demo/index.mjs";
+import { adapterDemo } from "./demo/index.mjs";
 
-singletonDemo();
+adapterDemo();
