@@ -1,20 +1,19 @@
-import {
-  RoundHole,
-  RoundPeg,
-  SquarePeg,
-  SquarePegAdapter,
-} from "../design-patterns/structural-patterns/adapter/index.mjs";
+import { createApp } from "../design-patterns/structural-patterns/adapter/config/index.mjs";
 
-export default function adapterDemo() {
-  const roundPeg = new RoundPeg(5);
-  const squarePeg = new SquarePeg(5);
+export default async function adapterDemo() {
+  const app = createApp();
 
-  const roundHole = new RoundHole(5);
+  await app.checkout({
+    orderId: "ORDER-001",
+    customerId: "USER-A",
+    amount: 800,
+    currency: "USD",
+  });
 
-  console.log("Does the round peg fit?");
-  console.log(roundHole.fits(roundPeg));
-
-  const squarePegAdapter = new SquarePegAdapter(squarePeg);
-  console.log("Does the square peg fit?");
-  console.log(roundHole.fits(squarePegAdapter));
+  await app.checkout({
+    orderId: "ORDER-002",
+    customerId: "USER-B",
+    amount: 2500,
+    currency: "USD",
+  });
 }
