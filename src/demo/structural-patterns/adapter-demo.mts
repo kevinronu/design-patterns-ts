@@ -1,4 +1,4 @@
-import { createApp } from "../design-patterns/structural-patterns/adapter/config/index.mjs";
+import { createApp } from "../../design-patterns/structural-patterns/adapter/config/index.mjs";
 
 export default async function adapterDemo() {
   const app = createApp();
