@@ -1,3 +1,3 @@
-import { adapterDemo } from "./demo/index.mjs";
+import { bridgeDemo } from "./demo/structural-patterns/index.mjs";
 
-await adapterDemo();
+await bridgeDemo();
