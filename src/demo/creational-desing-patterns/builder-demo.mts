@@ -1,8 +1,8 @@
 import {
   CarBuilder,
   CarManualBuilder,
-} from "../design-patterns/creational-design-patterns/builder/builder/index.mjs";
-import { Director } from "../design-patterns/creational-design-patterns/builder/director/index.mjs";
+} from "../../design-patterns/creational-design-patterns/builder/builder/index.mjs";
+import { Director } from "../../design-patterns/creational-design-patterns/builder/director/index.mjs";
 
 export default function builderDemo(): void {
   const director = new Director();
