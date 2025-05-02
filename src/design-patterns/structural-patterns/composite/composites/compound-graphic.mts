@@ -3,13 +3,13 @@ import { Graphic } from "../interfaces/index.mjs";
 export default class CompoundGraphic implements Graphic {
   private children: Graphic[] = [];
 
-  add(child: Graphic): void {
+  public add(child: Graphic): void {
     this.children.push(child);
 
     console.log(`➕ Added child to CompoundGraphic`);
   }
 
-  remove(child: Graphic): void {
+  public remove(child: Graphic): void {
     // let newChildren: Graphic[] = [];
 
     // for (const c of this.children) {
@@ -27,13 +27,13 @@ export default class CompoundGraphic implements Graphic {
     console.log(`➖ Removed child from CompoundGraphic`);
   }
 
-  move(posX: number, posY: number): void {
+  public move(posX: number, posY: number): void {
     console.log(`🔀 Moving all children by (${posX}, ${posY})`);
 
     this.children.forEach((child) => child.move(posX, posY));
   }
 
-  draw(): void {
+  public draw(): void {
     console.log("🎨 --- Drawing Compound Graphic ---");
     this.children.forEach((child) => child.draw());
     console.log("✅ --- End Compound Graphic ---\n");
