@@ -1,3 +1,3 @@
-import { bridgeDemo } from "./demo/structural-patterns/index.mjs";
+import { compositeDemo } from "./demo/structural-patterns/index.mjs";
 
-await bridgeDemo();
+compositeDemo();
