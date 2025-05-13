@@ -1,3 +1,3 @@
-import { compositeDemo } from "./demo/structural-patterns/index.mjs";
+import { decoratorDemo } from "./demo/structural-patterns/index.mjs";
 
-compositeDemo();
+decoratorDemo();
