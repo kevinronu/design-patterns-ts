@@ -7,26 +7,38 @@ export default class CompressionDecorator extends DataSourceDecorator {
   }
 
   public writeData(data: string): void {
-    // Step 1: Apply this decorator's transformation (simulate compression by reversing the string)
-    const transformed = data.split("").reverse().join("");
+    // Step 1: Compress and encode the data using this decorator's logic
+    const compressed = this.compress(data);
 
-    // Step 2: Encode the transformed string into Base64 to mimic binary-safe storage
-    const encoded = btoa(transformed);
-
-    // Step 3: Delegate the writing of the encoded data to the wrapped data source
-    super.writeData(encoded);
+    // Step 2: Delegate to the wrapped component
+    super.writeData(compressed);
   }
 
   public readData(): string {
-    // Step 1: Read the raw data from the wrapped component
-    const rawData = super.readData();
+    // Step 1: Read data from the wrapped component
+    const stored = super.readData();
 
-    // Step 2: Decode from Base64
-    const compressed = atob(rawData);
+    // Step 2: Decode and decompress to restore original content
+    const result = this.decompress(stored);
 
-    // Step 3: Simulate decompression by reversing the string
-    const original = compressed.split("").reverse().join("");
+    return result;
+  }
 
-    return original;
+  /**
+   * Simulates compression by reversing the string and encoding it in Base64.
+   * This mimics binary-safe storage after compression.
+   */
+  private compress(data: string): string {
+    const reversed = data.split("").reverse().join("");
+    return btoa(reversed); // Convert to Base64 to simulate binary-safe storage
+  }
+
+  /**
+   * Simulates decompression by decoding Base64 and reversing the string.
+   * This restores the original text.
+   */
+  private decompress(data: string): string {
+    const decoded = atob(data);
+    return decoded.split("").reverse().join("");
   }
 }
