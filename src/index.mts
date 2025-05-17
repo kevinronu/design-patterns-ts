@@ -1,3 +1,3 @@
-import { decoratorDemo } from "./demo/structural-patterns/index.mjs";
+import { facadeDemo } from "./demo/structural-patterns/index.mjs";
 
-decoratorDemo();
+facadeDemo();
