@@ -1,4 +1,4 @@
-// Represents the shared (intrinsic) state of a tree
+// Represents the shared (intrinsic) state of a tree (flyweight object)
 export default class TreeType {
   public readonly name: string;
   public readonly color: string;
