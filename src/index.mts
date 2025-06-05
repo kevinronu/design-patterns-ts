@@ -1,3 +1,3 @@
-import { flyweightDemo } from "./demo/structural-patterns/index.mjs";
+import { proxyDemo } from "./demo/structural-patterns/index.mjs";
 
-flyweightDemo();
+await proxyDemo();
