@@ -1,3 +1,3 @@
-import { proxyDemo } from "./demo/structural-patterns/index.mjs";
+import { chainOfResponsibilityDemo } from "./demo/behavioral-patterns/chain-of-responsibility/index.mjs";
 
-await proxyDemo();
+await chainOfResponsibilityDemo("Kevin", "123");
