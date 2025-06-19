@@ -1,3 +1,8 @@
-import { chainOfResponsibilityDemo } from "./demo/behavioral-patterns/chain-of-responsibility/index.mjs";
+import {
+  chainOfResponsibilityDemo,
+  runPeriodically,
+} from "./demo/behavioral-patterns/chain-of-responsibility/index.mjs";
 
-await chainOfResponsibilityDemo("Kevin", "123");
+runPeriodically(500, () =>
+  chainOfResponsibilityDemo("admin@example.com", "wrong_pass")
+);

@@ -18,13 +18,7 @@ export default class Server {
   public logIn(email: string, password: string): boolean {
     if (!this.handler) throw new Error("Handler chain not set.");
 
-    const success = this.handler.handle(email, password);
-
-    if (success) {
-      console.log("✅ Authorization successful!");
-    }
-
-    return success;
+    return this.handler.handle(email, password);
   }
 
   public hasEmail(email: string): boolean {

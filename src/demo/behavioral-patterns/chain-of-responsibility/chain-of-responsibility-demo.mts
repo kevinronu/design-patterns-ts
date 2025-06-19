@@ -5,32 +5,32 @@ import {
   RoleCheckHandler,
 } from "../../../design-patterns/behavioral-patterns/chain-of-responsibility/handlers/index.mjs";
 
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const server = new Server();
+server.register("admin@example.com", "admin_pass");
+server.register("user@example.com", "user_pass");
 
-export default async function chainOfResponsibilityDemo(
+// Set up chain
+const handlerChain = new RateLimitHandler(2);
+
+handlerChain
+  .setNext(new UserAuthHandler(server))
+  .setNext(new RoleCheckHandler());
+
+server.setHandler(handlerChain);
+
+export default function chainOfResponsibilityDemo(
   email: string,
   password: string
-) {
-  const server = new Server();
-  server.register("admin@example.com", "admin_pass");
-  server.register("user@example.com", "user_pass");
+): boolean {
+  return server.logIn(email, password);
+}
 
-  // Set up chain
-  const handlerChain = new RateLimitHandler(2);
+export function runPeriodically(intervalMs: number, callback: () => boolean) {
+  let internalID = setInterval(() => {
+    let success = callback();
 
-  handlerChain
-    .setNext(new UserAuthHandler(server))
-    .setNext(new RoleCheckHandler());
-
-  server.setHandler(handlerChain);
-
-  let success = false;
-
-  while (!success) {
-    success = server.logIn(email, password);
-
-    await sleep(500);
-  }
+    if (success) {
+      clearInterval(internalID);
+    }
+  }, intervalMs);
 }
