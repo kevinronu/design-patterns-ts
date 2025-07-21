@@ -1,3 +1,3 @@
-import { commandDemo } from "./demo/behavioral-patterns/command/index.mjs";
+import { iteratorDemo } from "./demo/behavioral-patterns/iterator/index.mjs";
 
-commandDemo();
+iteratorDemo();
