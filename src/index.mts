@@ -1,3 +1,3 @@
-import { iteratorDemo } from "./demo/behavioral-patterns/iterator/index.mjs";
+import { mediatorDemo } from "./demo/behavioral-patterns/mediator/index.mjs";
 
-iteratorDemo();
+mediatorDemo();
