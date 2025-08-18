@@ -1,3 +1,3 @@
-import { mediatorDemo } from "./demo/behavioral-patterns/mediator/index.mjs";
+import { mementoDemo } from "./demo/behavioral-patterns/memento/index.mjs";
 
-mediatorDemo();
+mementoDemo();
