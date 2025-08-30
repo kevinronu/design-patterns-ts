@@ -1,3 +1,3 @@
-import { mementoDemo } from "./demo/behavioral-patterns/memento/index.mjs";
+import { observerDemo } from "./demo/behavioral-patterns/observer/index.mjs";
 
-mementoDemo();
+observerDemo();
