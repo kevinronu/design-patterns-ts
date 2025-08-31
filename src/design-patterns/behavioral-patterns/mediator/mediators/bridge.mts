@@ -15,7 +15,7 @@ export default class Bridge implements Mediator {
   private shieldsControl?: ShieldsControl;
   private scannerControl?: ScannerControl;
 
-  public register(c: any): void {
+  public register(c: Component): void {
     c.setMediator(this);
 
     switch (c.getType()) {
