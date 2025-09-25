@@ -1,3 +1,3 @@
-import { observerDemo } from "./demo/behavioral-patterns/observer/index.mjs";
+import stateDemo from "./demo/behavioral-patterns/state/state-demo.mjs";
 
-observerDemo();
+stateDemo();
