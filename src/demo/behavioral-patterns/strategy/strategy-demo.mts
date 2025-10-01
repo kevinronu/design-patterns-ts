@@ -4,6 +4,12 @@ import {
   PayByCreditCard,
   PayStrategy,
 } from "../../../design-patterns/behavioral-patterns/strategy/strategies/index.mjs";
+import type {
+  PayStrategyDetails,
+  PayPalDetails,
+  CreditCardDetails,
+} from "../../../design-patterns/behavioral-patterns/strategy/strategies/index.mjs";
+import { PaymentDetailsType } from "../../../design-patterns/behavioral-patterns/strategy/strategies/index.mjs";
 
 export default function strategyDemo(): void {
   const priceOnProducts: Map<number, number> = new Map([
@@ -15,6 +21,20 @@ export default function strategyDemo(): void {
 
   const order = new Order();
   let strategy: PayStrategy | null = null;
+  let paymentDetails: PayStrategyDetails | null = null;
+
+  const paypalInput: PayPalDetails = {
+    method: PaymentDetailsType.PayPal,
+    email: "amanda@ya.com",
+    password: "amanda1985",
+  };
+
+  const creditCardInput: CreditCardDetails = {
+    method: PaymentDetailsType.CreditCard,
+    number: "4111 1111 1111 1111",
+    expiry: "12/25",
+    cvv: "123",
+  };
 
   // ---------- Simulated user input ----------
   // Product selection (simulate selecting 2 motherboards + 1 CPU)
@@ -42,16 +62,26 @@ export default function strategyDemo(): void {
 
     if (paymentMethod === 1) {
       strategy = new PayByPayPal();
-      console.log("👉 Chosen: PayPal");
+      paymentDetails = { ...paypalInput };
+      console.log(`👉 Chosen: PayPal (${paypalInput.email})`);
     } else {
       strategy = new PayByCreditCard();
-      console.log("👉 Chosen: Credit Card");
+      paymentDetails = { ...creditCardInput };
+      console.log(
+        `👉 Chosen: Credit Card ending ${creditCardInput.number.slice(-4)}`,
+      );
     }
   }
 
   // ---------- Collect payment details ----------
-  if (strategy) {
-    order.processOrder(strategy);
+  if (strategy && paymentDetails) {
+    const readyForPayment = order.processOrder(strategy, paymentDetails);
+
+    if (!readyForPayment) {
+      console.log("🚫 Payment aborted due to invalid details.");
+
+      return;
+    }
 
     // ---------- Decide to pay ----------
     const proceed = "P"; // Simulating user choosing "P" (Pay)

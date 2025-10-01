@@ -1,11 +1,17 @@
-import { PayStrategy } from "../strategies/index.mjs";
+import {
+  PayStrategy,
+  PayStrategyDetails,
+} from "../strategies/index.mjs";
 
 export default class Order {
   private totalCost: number = 0;
   private closed: boolean = false;
 
-  public processOrder(strategy: PayStrategy): void {
-    strategy.collectPaymentDetails();
+  public processOrder(
+    strategy: PayStrategy,
+    details: PayStrategyDetails,
+  ): boolean {
+    return strategy.collectPaymentDetails(details);
   }
 
   public setTotalCost(cost: number): void {

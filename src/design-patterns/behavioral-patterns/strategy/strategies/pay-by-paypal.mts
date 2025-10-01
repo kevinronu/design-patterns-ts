@@ -1,39 +1,59 @@
 import { PayStrategy } from "./index.mjs";
+import type {
+  PayPalDetails,
+  PayStrategyDetails,
+} from "./index.mjs";
+import { PaymentDetailsType } from "./index.mjs";
 
 export default class PayByPayPal implements PayStrategy {
   private static readonly DATABASE: Map<string, string> = new Map([
-    ["amanda1985", "amanda@ya.com"],
-    ["qwerty", "john@amazon.eu"],
+    ["amanda@ya.com", "amanda1985"],
+    ["john@amazon.eu", "qwerty"],
   ]);
 
   private email: string | null = null;
   private password: string | null = null;
   private signedIn: boolean = false;
 
-  public collectPaymentDetails(): void {
-    // In real app, this would come from UI form instead of console
-    console.log("📧 Simulating PayPal data input...");
-    this.email = "amanda@ya.com";
-    this.password = "amanda1985";
+  public collectPaymentDetails(details: PayStrategyDetails): boolean {
+    if (!this.isPayPalDetails(details)) {
+      console.warn("⚠️ PayPal strategy received incompatible payment details.");
+
+      return false;
+    }
+
+    this.email = details.email;
+    this.password = details.password;
+
+    console.log(`📧 Validating PayPal account for ${this.email}...`);
 
     if (!this.verify()) {
       console.log("❌ Wrong email or password!");
 
-      return;
+      return false;
     }
 
-    console.log("✅ Data verification has been successful.");
+    console.log("✅ PayPal credentials verified successfully.");
+
+    return true;
   }
 
   private verify(): boolean {
-    if (
-      this.password &&
-      PayByPayPal.DATABASE.get(this.password) === this.email
-    ) {
-      this.signedIn = true;
+    if (!this.email || !this.password) {
+      this.signedIn = false;
+
+      return this.signedIn;
     }
 
+    this.signedIn = PayByPayPal.DATABASE.get(this.email) === this.password;
+
     return this.signedIn;
+  }
+
+  private isPayPalDetails(
+    details: PayStrategyDetails,
+  ): details is PayPalDetails {
+    return details.method === PaymentDetailsType.PayPal;
   }
 
   public pay(paymentAmount: number): boolean {
