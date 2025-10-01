@@ -1,3 +1,3 @@
-import stateDemo from "./demo/behavioral-patterns/state/state-demo.mjs";
+import strategyDemo from "./demo/behavioral-patterns/strategy/strategy-demo.mjs";
 
-stateDemo();
+strategyDemo();
