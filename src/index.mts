@@ -1,3 +1,3 @@
-import { templateMethodDemo } from "./demo/behavioral-patterns/template-method/index.mjs";
+import { visitorDemo } from "./demo/behavioral-patterns/visitor-demo/index.mjs";
 
-templateMethodDemo();
+visitorDemo();
